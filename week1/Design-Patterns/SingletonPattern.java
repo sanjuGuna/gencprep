@@ -1,9 +1,10 @@
+//as the previous version is NOT Thread-safe
 class Singleton{
     private static Singleton ins;
     private Singleton(){
         System.out.println("Instance created");
     }
-    public static Singleton getInstance(){
+    public static synchronized Singleton getInstance(){//Synchronized b/w threads
         if(ins==null){
             ins=new Singleton();
         }
@@ -13,8 +14,13 @@ class Singleton{
 
 public class SingletonPattern{
     public static void main(String[] args) {
-        Singleton ob1= Singleton.getInstance();
-        Singleton ob2= Singleton.getInstance();
-        System.out.println(ob1==ob2);
+        Runnable task=()->{
+            Singleton ins=Singleton.getInstance();
+            System.out.println(Thread.currentThread().getName()+"->"+ins.hashCode());
+        };
+        Thread t1=new Thread(task,"t1");
+        Thread t2=new Thread(task,"t2");
+        t1.start();
+        t2.start();
     }
 } 
