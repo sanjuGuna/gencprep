@@ -1,12 +1,18 @@
-//as the previous version is NOT Thread-safe
+//as the previous version is NOT perfomance oriented
 class Singleton{
-    private static Singleton ins;
+    private static volatile Singleton ins;
     private Singleton(){
         System.out.println("Instance created");
     }
     public static synchronized Singleton getInstance(){//Synchronized b/w threads
-        if(ins==null){
-            ins=new Singleton();
+        Singleton tempIns=ins;
+        if(tempIns==null){
+            synchronized(Singleton.class){
+                if(tempIns==null){
+                    tempIns=new Singleton();
+                }
+                ins=tempIns;
+            }
         }
         return ins;
     }
