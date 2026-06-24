@@ -45,3 +45,20 @@ begin
     end if;
 end;
 /
+
+
+create or replace procedure greet
+is
+begin
+    dbms_output.put_line('Hello World');
+end;
+/
+exec greet;
+
+create or replace procedure square_num(n in number)
+is
+begin
+    dbms_output.put_line('Square = ' || (n*n));
+end;
+/
+exec square_num(5);
