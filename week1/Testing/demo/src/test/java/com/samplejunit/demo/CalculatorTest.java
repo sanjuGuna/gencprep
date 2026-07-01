@@ -19,12 +19,22 @@ public class CalculatorTest {
     
     @Test
     void subtractionTest(){
+        //Arrange
         Calculator calculator = new Calculator();
+
+        //Act
         int result = calculator.subtract(2,2);
         //System.out.println(result);
+
+        //Assert
         assertEquals(0,result);
         assertNotEquals(1,result);
         assertTrue(result == 0);
 //        assertFalse(result < 0);
+    }
+    @Test
+    void divideTest(){
+        Calculator calculator = new Calculator();
+        assertThrows(ArithmeticException.class,()->{calculator.divide(2,0);});
     }
 }
