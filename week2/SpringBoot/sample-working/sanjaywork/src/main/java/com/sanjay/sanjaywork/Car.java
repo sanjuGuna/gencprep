@@ -7,9 +7,14 @@ import org.springframework.stereotype.Component;
 public class Car {
     Engine engine;
     @Autowired
-    public Car(Engine engine){
+    public Car(Engine engine){//Constructor dependency Injection
         this.engine=engine;
     }
+
+    public void setEngine(Engine engine){//setter injection
+        this.engine=engine;
+    }
+
     public void drive(){
         System.out.println(engine.start());
     }

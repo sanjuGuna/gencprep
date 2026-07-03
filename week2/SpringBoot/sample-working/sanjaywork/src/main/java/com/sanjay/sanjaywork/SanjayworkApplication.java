@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SanjayworkApplication {
     @Autowired
     private Car car;
+
 	public static void main(String[] args) {
 		SpringApplication.run(SanjayworkApplication.class, args);
 	}
