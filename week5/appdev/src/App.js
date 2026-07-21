@@ -1,8 +1,12 @@
 import './App.css';
-import Engine from './Engine'
+import {About} from './About';
+import {Engine} from './Engine';
 function App() {
   return (
+    <>
     <Engine/>
+    <About/>
+    </>
   );
 }
 
